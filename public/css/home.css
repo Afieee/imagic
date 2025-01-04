@@ -351,6 +351,17 @@ body {
 }
 
 
+.like-count {
+    font-size: 14px;
+    font-weight: normal;
+    color: #777;
+    transition: color 0.3s ease, font-size 0.3s ease;
+}
+
+.like-count:hover {
+    color: #4CAF50; /* Warna hijau lembut saat hover */
+    font-size: 16px; /* Sedikit memperbesar ukuran font saat hover */
+}
 
 @media (max-width: 768px) {
 

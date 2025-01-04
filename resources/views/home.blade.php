@@ -37,11 +37,11 @@
                     <form action="{{ route('toggle-like') }}" method="POST" id="like-form-{{ $item->id_post }}">
                         @csrf
                         <input type="hidden" name="id_post" value="{{ $item->id_post }}">
-                        <button type="button" class="action-btn like-btn {{ $isLiked ? 'active' : '' }}"
-                            onclick="document.getElementById('like-form-{{ $item->id_post }}').submit();">
+                        <button type="button"
+                            class="action-btn like-btn {{ $isLiked ? 'active' : '' }}"onclick="document.getElementById('like-form-{{ $item->id_post }}').submit();">
                             <i class="fas fa-thumbs-up"></i>
-                            {{ $item->post_likes->count() }}
                         </button>
+
                     </form>
 
                     <button class="action-btn comment-btn">
@@ -50,6 +50,8 @@
                 </div>
 
                 <div class="post-content">
+                    <span class="like-count">Liked by <strong>{{ $item->post_likes->count() }}</strong> others</span>
+
                     Posted {{ $item->created_at->diffForHumans() }}
 
                     <p class="post-description">{!! nl2br(e($item->post_caption)) !!}</p>

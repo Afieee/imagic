@@ -31,6 +31,6 @@ class PostLikeController extends Controller
         }
 
         // Kembali ke halaman sebelumnya dengan pesan sukses
-        return back()->with('success', 'Tindakan berhasil dilakukan!');
+        return back()->with('success', 'Liked!');
     }
 }
