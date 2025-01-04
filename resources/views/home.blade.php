@@ -1,0 +1,68 @@
+<x-home-page-layout :user="$user">
+
+    <head>
+        <!-- Link CSS -->
+        <link href="{{ asset('css/home.css') }}" rel="stylesheet">
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    </head>
+
+    @if (session('success'))
+        <div class="toast-success">
+            <span class="toast-icon">&#10004;</span>
+            <span class="toast-message">{{ session('success') }}</span>
+            <span class="toast-close" onclick="closeToast()">&#10005;</span>
+        </div>
+    @endif
+
+    <div class="post-container">
+        @foreach ($postingan as $item)
+            <div class="post-card">
+                <div class="post-user-profile">
+                    <p class="user-name">{{ $item->user->name }}</p>
+                </div>
+
+                <div class="post-image">
+                    @if ($item->post_image)
+                        <img src="{{ asset($item->post_image) }}" alt="Uploaded Image">
+                    @else
+                        <div class="no-image">No Image</div>
+                    @endif
+                </div>
+
+                <div class="post-actions">
+                    @php
+                        $isLiked = $item->post_likes->contains('id_users', auth()->user()->id);
+                    @endphp
+
+                    <form action="{{ route('toggle-like') }}" method="POST" id="like-form-{{ $item->id_post }}">
+                        @csrf
+                        <input type="hidden" name="id_post" value="{{ $item->id_post }}">
+                        <button type="button" class="action-btn like-btn {{ $isLiked ? 'active' : '' }}"
+                            onclick="document.getElementById('like-form-{{ $item->id_post }}').submit();">
+                            <i class="fas fa-thumbs-up"></i>
+                            {{ $item->post_likes->count() }}
+                        </button>
+                    </form>
+
+                    <button class="action-btn comment-btn">
+                        <i class="fas fa-comment"></i>
+                    </button>
+                </div>
+
+                <div class="post-content">
+                    Posted {{ $item->created_at->diffForHumans() }}
+
+                    <p class="post-description">{!! nl2br(e($item->post_caption)) !!}</p>
+                </div>
+            </div>
+        @endforeach
+    </div>
+
+    <!-- Link JavaScript -->
+    <script>
+        function closeToast() {
+            document.querySelector('.toast-success').style.display = 'none';
+        }
+    </script>
+    <script src="{{ asset('js/home.js') }}"></script>
+</x-home-page-layout>
