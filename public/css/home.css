@@ -293,8 +293,8 @@ body {
 }
 
 .post-description {
-    color: #666;
-    font-size: 14px;
+    color: #333; 
+    font-weight: 500; 
     line-height: 1.6;
     text-align: justify;
 }
@@ -362,6 +362,21 @@ body {
     color: #4CAF50; /* Warna hijau lembut saat hover */
     font-size: 16px; /* Sedikit memperbesar ukuran font saat hover */
 }
+
+
+hr {
+    border: 0; 
+    border-top: 1px solid #ccc; /* Garis tipis berwarna abu-abu */
+    margin: 20px 0; /* Menambahkan jarak di atas dan bawah garis */
+    opacity: 0.5; /* Menjadikan garis lebih transparan untuk tampilan yang lebih halus */
+}
+
+
+
+
+
+
+
 
 @media (max-width: 768px) {
 
