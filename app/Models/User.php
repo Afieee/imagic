@@ -42,6 +42,58 @@ class User extends Authenticatable
         return $this->hasMany(Comment::class, 'id_post', 'id_post');
     }
 
+
+    public function following()
+    {
+        return $this->hasMany(Follow::class, 'id_following');
+    }
+
+    public function followers()
+    {
+        return $this->belongsToMany(User::class, 'follow', 'id_followed', 'id_following')
+            ->where('follow', true);
+    }
+
+    public function followings()
+    {
+        return $this->belongsToMany(User::class, 'follow', 'id_following', 'id_followed')
+            ->where('follow', true);
+    }
+
+
+    public function followersCollection()
+    {
+        return $this->belongsToMany(User::class, 'follow', 'id_followed', 'id_following');
+    }
+
+
+
+    public function follows()
+    {
+        return $this->hasMany(Follow::class, 'id_following');
+    }
+
+    public function isFollowing($userId)
+    {
+        // Menggunakan relasi follow untuk memeriksa apakah pengguna sedang mengikuti user dengan ID tertentu
+        return $this->follows()->where('id_followed', $userId)->exists();
+    }
+
+
+    public function isFollowedBySessionUser()
+    {
+        $id_following = session('user')->id ?? null;
+
+        if (!$id_following) {
+            return false;
+        }
+        $follow = Follow::where('id_following', $id_following)
+            ->where('id_followed', $this->id)
+            ->first();
+
+        return $follow && $follow->follow; // Return true jika `follow` bernilai true
+    }
+
     public $timestamps = true;
 
     /**

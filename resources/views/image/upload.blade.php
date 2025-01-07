@@ -50,7 +50,7 @@
 
             <div class="form-group">
                 <label for="caption">Caption:</label>
-                <textarea id="post_caption" name="caption" cols="140" rows="10" placeholder="Write something creative..."></textarea>
+                <textarea id="post_caption" name="caption" cols="130" rows="10" placeholder="Write something creative..."></textarea>
             </div>
 
             <button type="submit" class="upload-button">UPLOAD</button>

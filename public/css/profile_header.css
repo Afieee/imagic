@@ -33,6 +33,7 @@ body {
     color: #fff;
     border: none;
     padding: 10px 20px;
+    margin-bottom: 50px;
     margin: 10px 5px;
     border-radius: 20px;
     cursor: pointer;
@@ -48,17 +49,16 @@ body {
     margin: 10px 0;
 }
 
-.profile-header .stats span {
-    margin: 0 10px;
-}
+
 
 .profile-header .website {
     color: #000;
     text-decoration: none;
+    /* margin-bottom: 50px; */
 }
 
 .profile-header .website:hover {
-    text-decoration: underline;
+    text-decoration: none;
 }
 
 .profile-header .cover-photo img {

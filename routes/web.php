@@ -4,6 +4,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ImageController;
 use App\Http\Controllers\UsersController;
+use App\Http\Controllers\FollowController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PostLikeController;
@@ -33,6 +34,7 @@ Route::get('/upload', [ImageController::class, 'halamanCreate'])->name('image.in
 Route::post('/process', [ImageController::class, 'process'])->name('image.process');
 Route::post('/image/store', [ImageController::class, 'store'])->name('post.store');
 Route::post('/toggle-like', [PostLikeController::class, 'toggleLike'])->name('toggle-like');
+Route::post('/follow/{user_id}', [FollowController::class, 'toggleFollow'])->name('follow.toggle');
 
 
 Route::get('/comment/{id_post}', [CommentController::class, 'halamanComment'])->name('comment');
@@ -40,3 +42,6 @@ Route::get('/comment/{id_post}', [CommentController::class, 'halamanComment'])->
 Route::post('/commented', [CommentController::class, 'tambahComment']);
 
 Route::get('/profile/{user_id}', [ProfileController::class, 'getProfile'])->name('profile');
+Route::get('/setting/{sessionId}', [ProfileController::class, 'setting'])->name('setting');
+
+Route::put('/edit-profile/{sessionId}', [ProfileController::class, 'updateProfile'])->name('updateProfile');

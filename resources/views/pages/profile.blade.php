@@ -13,8 +13,7 @@
 
 
         <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet" />
-        <style>
-        </style>
+
     </head>
 
     <body>
@@ -23,36 +22,31 @@
                 src="https://storage.googleapis.com/a1aa/image/85CMLozD2X5YLN91mP0pdSJpyFcrrfevqr8mKf5hgOfhfNVgC.jpg"
                 width="100" />
             <h1>
-                {{ $postingan->first()->user->name ?? $user->name }} |
-                {{ $postingan->first()->user->bio ?? $user->bio }}
+                {{ $postingan->first()->user->name ?? $user->name }}
             </h1>
+            <div>
+                {{ $postingan->first()->user->bio ?? $user->bio }}
 
+            </div>
             <div class="stats">
                 <span>
-                    634 pengikut
-                </span>
-                -
-                <span>
-                    717 mengikuti
-                </span>
-                -
-                <span>
-                    12.9rb tayangan bulanan
+                    <span id="jumlah-follower">{{ $jumlahFollower }}</span> Followers
                 </span>
             </div>
-            <a class="website" href="https://ablondegalblogs.home.blog">
+            <p class="website">
                 Work Contact: {{ $postingan->first()->user->email ?? $user->email }}
-
-            </a>
+            </p>
             <div>
-                <button class="follow-btn">
-                    Ikuti
-                </button>
-                <button class="message-btn" style="margin-bottom: 50px">
-                    Hubungi
-                </button>
+                @if (auth()->user()->id !== ($postingan->first()->user->id ?? $user->id))
+                    <button class="follow-btn" id="follow-button"
+                        data-user-id="{{ $postingan->first()->user->id ?? $user->id }}">
+                        {{ auth()->user()->isFollowing($postingan->first()->user->id)? 'Berhenti Mengikuti': 'Ikuti' }}
+                    </button>
+                @endif
             </div>
-            <div class="cover-photo">
+
+
+            <div class="cover-photo" style="margin-top: 50px">
                 <div class="post-container">
                     @foreach ($postingan as $item)
                         <div class="post-card">
@@ -94,8 +88,10 @@
                             </div>
 
                             <div class="post-content">
-                                <p class="like-count">Liked by <strong>{{ $item->post_likes->count() }}</strong>
-                                    others</p>
+                                <p class="like-count" id="like-count-{{ $item->id_post }}">
+                                    Liked by <strong>{{ $item->post_likes->count() }}</strong> others
+                                </p>
+
 
                                 Posted {{ $item->created_at->diffForHumans() }}
                                 <hr>
@@ -108,7 +104,32 @@
 
 
 
+                <script>
+                    document.getElementById('follow-button').addEventListener('click', function() {
+                        const button = this;
+                        const userId = button.getAttribute('data-user-id');
+                        const followerCountElement = document.getElementById('jumlah-follower');
 
+                        fetch(`/follow/${userId}`, {
+                                method: 'POST',
+                                headers: {
+                                    'X-CSRF-TOKEN': '{{ csrf_token() }}',
+                                    'Content-Type': 'application/json'
+                                },
+                            })
+                            .then(response => response.json())
+                            .then(data => {
+                                if (data.status === 'followed') {
+                                    button.textContent = 'Berhenti Mengikuti';
+                                    followerCountElement.textContent = data.newFollowerCount;
+                                } else if (data.status === 'unfollowed') {
+                                    button.textContent = 'Ikuti';
+                                    followerCountElement.textContent = data.newFollowerCount;
+                                }
+                            })
+                            .catch(error => console.error('Error:', error));
+                    });
+                </script>
     </body>
 
     </html>
