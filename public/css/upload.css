@@ -1,0 +1,281 @@
+/* Container untuk form */
+.upload-container {
+    max-width: 900px;
+    margin: 0 auto;
+    margin-top: 30px;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Styling untuk judul upload */
+.upload-title {
+    text-align: center;
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 20px;
+    font-family: 'Poppins', sans-serif;
+}
+
+/* Styling form-group untuk setiap elemen form */
+.form-group {
+    margin-bottom: 20px;
+}
+
+/* Styling untuk label */
+.form-group label {
+    display: block;
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 8px;
+    color: #333;
+}
+
+/* Styling untuk input file dan tombol upload */
+.file-input-wrapper {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+}
+
+.file-input-wrapper input[type="file"] {
+    display: none;
+    /* Sembunyikan input file */
+}
+
+/* Styling untuk tombol file upload */
+.file-upload-btn {
+    background-color: white;
+    /* Warna putih */
+    color: #333;
+    /* Teks warna abu-abu gelap untuk kontras */
+    padding: 14px 24px;
+    font-size: 16px;
+    font-weight: bold;
+    border: 2px solid #ddd;
+    /* Garis border abu-abu terang */
+    border-radius: 8px;
+    cursor: pointer;
+    width: 24%;
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    /* Bayangan halus */
+    transition: all 0.3s ease-in-out;
+    /* Efek transisi */
+}
+
+.file-upload-btn:hover {
+    background-color: #f8f8f8;
+    /* Warna latar belakang lebih gelap sedikit saat hover */
+    color: #000;
+    /* Warna teks menjadi hitam untuk kontras lebih baik */
+    border-color: #bbb;
+    /* Border lebih gelap saat hover */
+    transform: translateY(-3px);
+    /* Efek terangkat */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+    /* Bayangan lebih besar */
+}
+
+.file-upload-btn:focus {
+    outline: none;
+    /* Hilangkan outline saat tombol fokus */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    /* Efek fokus dengan bayangan lebih jelas */
+}
+
+/* Preview image */
+.image-preview {
+    margin-top: 10px;
+    text-align: center;
+}
+
+.image-preview img {
+    max-width: 100%;
+    max-height: 400px;
+    border-radius: 8px;
+    margin-top: 10px;
+}
+
+textarea {
+    width: 100%;
+    font-size: 12px;
+    font-family: 'Poppins', sans-serif;
+    /* Menggunakan font yang modern */
+    border-radius: 12px;
+    /* Sudut lebih melengkung */
+    border: 1px solid #ddd;
+    background: linear-gradient(to right, #ffffff, #f7f7f7);
+    /* Latar belakang gradien */
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
+    /* Bayangan dalam */
+    resize: none;
+    /* Tidak dapat diubah ukurannya */
+    transition: all 0.3s ease-in-out;
+    /* Efek transisi */
+}
+
+textarea:focus {
+    border-color: #ff4d4f;
+    outline: none;
+    box-shadow: 0 4px 8px rgba(255, 77, 79, 0.4), inset 0 2px 4px rgba(0, 0, 0, 0.1);
+    /* Bayangan lebih hidup saat fokus */
+}
+
+textarea::placeholder {
+    color: #aaa;
+    font-style: italic;
+    font-size: 14px;
+    /* Placeholder lebih kecil dan halus */
+    transition: all 0.3s ease-in-out;
+}
+
+/* Styling tombol submit */
+.upload-button {
+    background-color: #ff4d4f;
+    /* Warna biru yang modern */
+    color: white;
+    padding: 14px 22px;
+    font-size: 18px;
+    font-weight: bold;
+    border: none;
+    border-radius: 8px;
+    /* Sudut yang lebih melengkung untuk tampilan yang lebih halus */
+    cursor: pointer;
+    width: 50%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    /* Bayangan halus di bawah tombol */
+    transition: all 0.3s ease-in-out;
+    /* Efek transisi saat hover atau focus */
+    text-transform: uppercase;
+    /* Mengubah teks menjadi kapital */
+}
+
+.upload-button:hover {
+    background-color: #2980b9;
+    /* Warna biru lebih gelap saat hover */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    /* Bayangan lebih dalam saat hover */
+    transform: translateY(-3px);
+    /* Efek tombol terangkat */
+}
+
+.upload-button:focus {
+    outline: none;
+    /* Hilangkan outline default */
+    box-shadow: 0 0 15px rgba(52, 152, 219, 0.6);
+    /* Bayangan biru saat fokus */
+}
+
+/* Efek ketika tombol dalam keadaan aktif */
+.upload-button:active {
+    transform: translateY(2px);
+    /* Menambahkan efek penurunan sedikit */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    /* Bayangan lebih ringan saat aktif */
+}
+
+/* Toast */
+.toast-success {
+    position: fixed;
+    top: 10%;
+    /* Posisi atas relatif terhadap layar */
+    left: 50%;
+    /* Posisi kiri relatif terhadap layar */
+    transform: translateX(-50%);
+    /* Memastikan toast berada tepat di tengah */
+    background-color: #4caf50;
+    /* Warna hijau untuk notifikasi sukses */
+    color: white;
+    border-radius: 8px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 15px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    font-size: 14px;
+    font-weight: 500;
+    z-index: 1000;
+    animation: slideIn 0.5s ease-out;
+}
+
+.toast-icon {
+    font-size: 18px;
+    /* Ukuran ikon */
+    color: #d4fdd4;
+    /* Warna hijau terang sebagai pelengkap */
+    margin-right: 10px;
+    /* Memberi jarak dengan pesan */
+}
+
+.toast-close {
+    cursor: pointer;
+    font-size: 18px;
+    color: white;
+}
+
+.toast-close:hover {
+    color: #c1eac1;
+}
+
+/* Media Queries untuk Responsif Mobile */
+@media (max-width: 768px) {
+    .upload-container {
+        padding: 15px;
+    }
+
+    .upload-title {
+        font-size: 20px;
+    }
+
+    .form-group label {
+        font-size: 14px;
+    }
+
+    .file-upload-btn {
+        width: 100%;
+        /* Tombol pilih file menjadi full width */
+        padding: 12px;
+    }
+
+    .upload-button {
+        width: 100%;
+        /* Tombol upload menjadi full width */
+        padding: 12px;
+    }
+
+    .image-preview img {
+        max-height: 300px;
+        /* Mengurangi ukuran gambar di preview */
+    }
+
+    textarea {
+        font-size: 14px;
+        padding: 10px;
+    }
+
+    .upload-button {
+        padding: 12px 20px;
+        font-size: 16px;
+    }
+}
+
+/* Media Queries untuk Responsif di perangkat lebih kecil (mobile portrait) */
+@media (max-width: 480px) {
+    .upload-title {
+        font-size: 18px;
+    }
+
+    .file-upload-btn {
+        font-size: 14px;
+        padding: 10px;
+    }
+
+    .upload-button {
+        font-size: 16px;
+        padding: 10px 18px;
+    }
+}

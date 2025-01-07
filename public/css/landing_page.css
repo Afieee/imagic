@@ -1,0 +1,316 @@
+/* *{
+    border: 1px red solid !important;
+} */
+body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    place-items: center;
+}
+
+.navigasi-bar {
+    width: 100%;
+    height: 80px;
+    background-color: white;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.06);
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-evenly;
+    gap: 10px;
+    padding: 0 15px;
+    box-sizing: border-box;
+}
+
+.a-logo {
+    display: flex;
+    border-radius: 50%;
+    padding: 10px;
+    flex-shrink: 0;
+}
+
+.logo-brand {
+    width: 50px;
+    height: 50px;
+}
+
+.nav-items {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.nav-text {
+    color: black;
+    text-decoration: none;
+    font-family: 'Poppins', serif;
+    padding: 5px 15px;
+    border-radius: 15px;
+    flex-shrink: 0;
+}
+
+.nav-text:hover {
+    background-color: rgb(240, 240, 240);
+}
+
+.search-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    flex-grow: 1;
+    max-width: 600px;
+}
+
+.search-bar {
+    width: 100%;
+    padding: 10px 40px 10px 15px;
+    border: 1px solid #ccc;
+    border-radius: 25px;
+    font-size: 14px;
+    font-family: 'Poppins', sans-serif;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    outline: none;
+    transition: all 0.3s ease;
+}
+
+.search-bar:hover,
+.search-bar:focus {
+    border-color: #cc001f;
+    box-shadow: 0 2px 10px rgba(108, 99, 255, 0.3);
+}
+
+.search-icon {
+    position: absolute;
+    right: 15px;
+    font-size: 18px;
+    color: #888;
+    pointer-events: none;
+}
+
+
+
+.login {
+    background-color: transparent;
+    color: black;
+    border: none;
+    padding: 5px 5px 5px 5px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+    border-radius: 15px;
+    text-decoration: none;
+}
+
+.login:hover {
+    background-color: rgb(240, 240, 240);
+}
+/* grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));  */
+
+/* TONI */
+.main {
+    width: 85%;
+    min-height: 90vh; 
+    height: auto; 
+    margin: 90px auto; 
+    background-color: rgb(229, 229, 229);
+    border-radius: 25px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.06);
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); 
+
+    display: grid; 
+    gap: 15px; 
+    padding: 20px;
+}
+
+
+/* POSTIN */
+.post-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 25px;
+}
+
+/* Individual post card */
+.post-card {
+    background-color: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.post-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+}
+
+/* User profile section */
+.post-user-profile {
+    padding: 15px;
+    background-color: #f1f1f1;
+    border-bottom: 1px solid #eee;
+}
+
+.user-name {
+    font-weight: 700;
+    font-size: 16px;
+    color: #333;
+    margin: 0;
+    letter-spacing: 0.5px;
+}
+
+/* Image section */
+.post-image img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+    border-radius: 10px;
+}
+
+
+.no-image {
+    width: 100%;
+    height: 200px;
+    background-color: #f0f0f0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #999;
+    font-size: 16px;
+    font-weight: 500;
+}
+
+/* Description section */
+.post-content {
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.post-content p {
+    margin: 0;
+}
+
+.post-description {
+    color: #666;
+    font-size: 14px;
+    line-height: 1.6;
+    text-align: justify;
+}
+
+
+/* Like and Comment Section */
+.post-actions {
+    display: flex;
+    justify-content: flex-start;
+    gap: 10px;
+    padding: 15px;
+    background-color: #f9f9f9;
+    border-top: 1px solid #eee;
+}
+
+/* Buttons style */
+.action-btn {
+    background-color: #f0f0f0; /* Soft background color */
+    border: none;
+    border-radius: 50%; /* Make buttons round */
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.06);
+    cursor: pointer;
+    transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+.action-btn i {
+    font-size: 18px;
+    color: #555; /* Default icon color */
+}
+
+/* Hover effect */
+.action-btn:hover {
+    transform: scale(1.1); /* Slightly enlarge button */
+    background-color: #eaeaea; /* Change background color on hover */
+}
+
+.like-btn i {
+    color: #e74c3c; /* Red for like icon */
+}
+
+.comment-btn i {
+    color: #3498db; /* Blue for comment icon */
+}
+
+/* Active (clicked) state */
+.action-btn:active {
+    transform: scale(0.95); /* Slightly shrink on click */
+    background-color: #ddd;
+}
+
+
+
+
+
+
+@media (max-width: 768px) {
+    .navigasi-bar {
+        flex-direction: column;
+        justify-content: center;
+        height: auto;
+        gap: 10px;
+        position: relative;
+    }
+
+    .search-container {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+    }
+
+    .search-bar {
+        width: 80%;
+    }
+
+    .search-icon {
+        font-size: 18px;
+        color: #888;
+        pointer-events: none;
+        right: 80px;
+        position: absolute;
+    }
+
+    .navigasi-bar {
+        padding-bottom: 10px;
+    }
+
+    .dropdown-content {
+        display: none;
+        position: absolute;
+        background-color: white;
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        z-index: 1;
+        min-width: 200px;
+        min-height: 260px;
+        border-radius: 5px;
+        top: 100%;
+        left: -100%;
+        opacity: 0;
+        visibility: hidden;
+        transition: opacity 0.3s ease, visibility 0s linear 0s;
+    }
+
+    .dropdown-content.show {
+        display: block;
+        opacity: 1;
+        visibility: visible;
+        transition: opacity 0.3s ease, visibility 0s linear 0s;
+    }
+}
