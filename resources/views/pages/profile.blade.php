@@ -9,110 +9,11 @@
             Imagic | Profile
         </title>
         <link rel="stylesheet" href="{{ asset('css/upload.css') }}">
+        <link rel="stylesheet" href="{{ asset('css/profile_header.css') }}">
+
 
         <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet" />
         <style>
-            body {
-                font-family: Arial, sans-serif;
-                margin: 0;
-                padding: 0;
-                background-color: #f5f5f5;
-            }
-
-            .profile-header {
-                text-align: ;
-                padding: 20px;
-                background-color: #fff;
-                border-bottom: 1px solid #ddd;
-            }
-
-            .profile-header img {
-                border-radius: 50%;
-                width: 100px;
-                height: 100px;
-            }
-
-            .profile-header h1 {
-                font-size: 24px;
-                margin: 10px 0;
-            }
-
-            .profile-header p {
-                color: #666;
-                margin: 5px 0;
-            }
-
-            .profile-header .follow-btn,
-            .profile-header .message-btn {
-                background-color: #e60023;
-                color: #fff;
-                border: none;
-                padding: 10px 20px;
-                margin: 10px 5px;
-                border-radius: 20px;
-                cursor: pointer;
-            }
-
-            .profile-header .message-btn {
-                background-color: #ddd;
-                color: #333;
-            }
-
-            .profile-header .stats {
-                color: #666;
-                margin: 10px 0;
-            }
-
-            .profile-header .stats span {
-                margin: 0 10px;
-            }
-
-            .profile-header .website {
-                color: #000;
-                text-decoration: none;
-            }
-
-            .profile-header .website:hover {
-                text-decoration: underline;
-            }
-
-            .profile-header .cover-photo img {
-                width: 100%;
-                height: auto;
-                border-radius: 10px;
-            }
-
-            .tabs {
-                display: flex;
-                justify-content: center;
-                background-color: #fff;
-                border-bottom: 1px solid #ddd;
-            }
-
-            .tabs a {
-                padding: 15px 20px;
-                text-decoration: none;
-                color: #333;
-                font-weight: bold;
-            }
-
-            .tabs a.active {
-                border-bottom: 2px solid #e60023;
-                color: #e60023;
-            }
-
-
-            @media (max-width: 768px) {
-                .gallery .item {
-                    width: 45%;
-                }
-            }
-
-            @media (max-width: 480px) {
-                .gallery .item {
-                    width: 100%;
-                }
-            }
         </style>
     </head>
 
