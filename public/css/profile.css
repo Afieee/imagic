@@ -211,8 +211,8 @@
         display: flex;
         flex-direction: column;
         gap: 20px;
-      }
-      
+    }
+
 
     .post-card {
         background-color: white;
@@ -319,7 +319,7 @@
     }
 
     .like-btn i {
-        color: #e74c3c;
+        color: #cc001f;
     }
 
     .comment-btn i {

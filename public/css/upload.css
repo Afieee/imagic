@@ -269,7 +269,7 @@ textarea::placeholder {
         transition: all 0.3s ease-in-out;
         /* Efek transisi */
     }
-    
+
 
     .upload-button {
         padding: 12px 20px;
@@ -292,6 +292,7 @@ textarea::placeholder {
         font-size: 16px;
         padding: 10px 18px;
     }
+
     textarea {
         width: 95%;
         font-size: 12px;

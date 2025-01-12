@@ -51,13 +51,13 @@
 
         .input-group input:focus,
         .input-group textarea:focus {
-            border-color: #ea4335;
+            border-color: #cc001f;
         }
 
         .submit-btn {
             width: 93%;
             padding: 12px;
-            background-color: #ea4335;
+            background-color: #cc001f;
             color: white;
             font-size: 18px;
             font-weight: bold;
@@ -68,11 +68,11 @@
         }
 
         .submit-btn:hover {
-            background-color: #db2d23;
+            background-color: #cc001f;
         }
 
         .submit-btn:active {
-            background-color: #b01a1a;
+            background-color: #cc001f;
         }
 
         @media (max-width: 1024px) {

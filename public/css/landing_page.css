@@ -106,21 +106,22 @@ body {
 .login:hover {
     background-color: rgb(240, 240, 240);
 }
+
 /* grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));  */
 
 /* TONI */
 .main {
     width: 85%;
-    min-height: 90vh; 
-    height: auto; 
-    margin: 90px auto; 
+    min-height: 90vh;
+    height: auto;
+    margin: 90px auto;
     background-color: rgb(229, 229, 229);
     border-radius: 25px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.06);
-    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); 
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
 
-    display: grid; 
-    gap: 15px; 
+    display: grid;
+    gap: 15px;
     padding: 20px;
 }
 
@@ -217,9 +218,11 @@ body {
 
 /* Buttons style */
 .action-btn {
-    background-color: #f0f0f0; /* Soft background color */
+    background-color: #f0f0f0;
+    /* Soft background color */
     border: none;
-    border-radius: 50%; /* Make buttons round */
+    border-radius: 50%;
+    /* Make buttons round */
     width: 40px;
     height: 40px;
     display: flex;
@@ -232,26 +235,32 @@ body {
 
 .action-btn i {
     font-size: 18px;
-    color: #555; /* Default icon color */
+    color: #555;
+    /* Default icon color */
 }
 
 /* Hover effect */
 .action-btn:hover {
-    transform: scale(1.1); /* Slightly enlarge button */
-    background-color: #eaeaea; /* Change background color on hover */
+    transform: scale(1.1);
+    /* Slightly enlarge button */
+    background-color: #eaeaea;
+    /* Change background color on hover */
 }
 
 .like-btn i {
-    color: #e74c3c; /* Red for like icon */
+    color: #cc001f;
+    /* Red for like icon */
 }
 
 .comment-btn i {
-    color: #3498db; /* Blue for comment icon */
+    color: #3498db;
+    /* Blue for comment icon */
 }
 
 /* Active (clicked) state */
 .action-btn:active {
-    transform: scale(0.95); /* Slightly shrink on click */
+    transform: scale(0.95);
+    /* Slightly shrink on click */
     background-color: #ddd;
 }
 
