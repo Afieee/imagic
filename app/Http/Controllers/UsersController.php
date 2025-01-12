@@ -75,7 +75,11 @@ class UsersController extends Controller
                     ->orWhereHas('user', function ($q) use ($katakunci) {
                         $q->where('name', 'like', "%{$katakunci}%");
                     });
-            })->orderBy('created_at', 'desc')->get();
+            })
+            ->join('users', 'post.user_id', '=', 'users.id') // Gabungkan dengan tabel 'users'
+            ->orderByRaw('users.premium = "Premium" DESC') // Mengurutkan berdasarkan atribut 'premium'
+            ->orderBy('post.created_at', 'desc') // Mengurutkan postingan berdasarkan waktu
+            ->get();
 
 
 

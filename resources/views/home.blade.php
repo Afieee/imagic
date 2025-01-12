@@ -19,8 +19,14 @@
         @foreach ($postingan as $item)
             <div class="post-card">
                 <div class="post-user-profile">
-                    <a href="{{ route('profile', $item->user->id) }}" class="user-name"
-                        style="text-decoration: none;">{{ $item->user->name }}</a>
+                    <a href="{{ route('profile', $item->user->id) }}" class="user-name" style="text-decoration: none;">
+                        {{ $item->user->name }}
+                        @if ($item->user->premium == 'Premium')
+                            <i class="fas fa-star" style="color: gold; margin-left: 5px;"
+                                title="{{ $item->user->name }} Adalah User Premium"></i>
+                        @endif
+                    </a>
+
                 </div>
 
                 <div class="post-image">

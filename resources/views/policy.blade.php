@@ -5,7 +5,7 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Usage Policy</title>
+        <title>Imagic | Policy</title>
     </head>
 
     <body>

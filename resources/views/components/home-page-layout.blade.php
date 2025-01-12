@@ -40,7 +40,6 @@
                             d="M10 2a8 8 0 105.293 14.707l5.32 5.32a1 1 0 001.415-1.415l-5.32-5.32A8 8 0 0010 2zm0 2a6 6 0 110 12A6 6 0 0110 4z" />
                     </svg>
                 </span>
-
             </div>
         </form>
 
@@ -59,6 +58,7 @@
             </button>
             <div class="dropdown-content">
                 <a href="#"><i class="fa-solid fa-user"></i>My Work</a>
+                <a href="/subscribe"><i class="fas fa-star"></i> Subscribe</a>
                 <a href="/policy"><i class="fas fa-info-circle"></i> Policy</a>
                 <a href="{{ route('setting', $user->id) }}"><i class="fas fa-cog"></i> Settings</a>
                 <form action="/logout" method="POST" style="margin: 0; padding: 0;">

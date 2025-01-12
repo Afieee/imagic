@@ -24,6 +24,7 @@ class User extends Authenticatable
         'email',
         'password',
         'bio',
+        'premium',
     ];
 
     public function post()
@@ -61,10 +62,10 @@ class User extends Authenticatable
     }
 
 
-    public function followersCollection()
-    {
-        return $this->belongsToMany(User::class, 'follow', 'id_followed', 'id_following');
-    }
+    // public function followersCollection()
+    // {
+    //     return $this->belongsToMany(User::class, 'follow', 'id_followed', 'id_following');
+    // }
 
 
 
@@ -92,6 +93,13 @@ class User extends Authenticatable
             ->first();
 
         return $follow && $follow->follow; // Return true jika `follow` bernilai true
+    }
+
+
+
+    public function subscribes()
+    {
+        return $this->hasMany(Subscribe::class, 'id_user');
     }
 
     public $timestamps = true;

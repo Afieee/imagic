@@ -6,8 +6,10 @@ use App\Http\Controllers\ImageController;
 use App\Http\Controllers\UsersController;
 use App\Http\Controllers\FollowController;
 use App\Http\Controllers\CommentController;
+use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PostLikeController;
+use App\Http\Controllers\SubscribeController;
 
 Route::get('/', [UsersController::class, 'halamanIndex']);
 Route::get('/login', function () {
@@ -25,6 +27,7 @@ Route::post('/login-berhasil', [\App\Http\Controllers\UsersController::class, 'l
 Route::middleware('auth')->group(function () {
     Route::get('/home', [\App\Http\Controllers\UsersController::class, 'halamanHome'])->name('halaman-home');
     Route::get('/policy', [UsersController::class, 'halamanPolicy']);
+    Route::get('/subscribe', [SubscribeController::class, 'halamanSubscribe']);
     Route::get('/upload', [ImageController::class, 'halamanCreate'])->name('image.index');
     Route::post('/process', [ImageController::class, 'process'])->name('image.process');
     Route::post('/image/store', [ImageController::class, 'store'])->name('post.store');
@@ -35,5 +38,6 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile/{user_id}', [ProfileController::class, 'getProfile'])->name('profile');
     Route::get('/setting/{sessionId}', [ProfileController::class, 'setting'])->name('setting');
     Route::put('/edit-profile/{sessionId}', [ProfileController::class, 'updateProfile'])->name('updateProfile');
+    Route::post('/process-payment/', [SubscribeController::class, 'processPayment'])->name('process.payment');
     Route::post('/logout', [UsersController::class, 'logout']);
 });

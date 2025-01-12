@@ -3,6 +3,9 @@
     <head>
         <link rel="stylesheet" href="{{ asset('css/setting.css') }}">
     </head>
+    <title>
+        Imagic | Setting
+    </title>
     <style>
         .pro-con {
             width: 100%;
