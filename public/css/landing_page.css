@@ -1,6 +1,7 @@
-/* *{
+/* * {
     border: 1px red solid !important;
 } */
+
 body {
     margin: 0;
     padding: 0;
@@ -114,7 +115,7 @@ body {
     width: 85%;
     min-height: 90vh;
     height: auto;
-    margin: 90px auto;
+    margin-top: 90px;
     background-color: rgb(229, 229, 229);
     border-radius: 25px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.06);
@@ -129,7 +130,7 @@ body {
 /* POSTIN */
 .post-container {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     gap: 25px;
 }
 
@@ -270,6 +271,32 @@ body {
 
 
 @media (max-width: 768px) {
+    .main {
+        width: 60%;
+        min-height: 90vh;
+        height: auto;
+        margin-top: 90px;
+        background-color: rgb(229, 229, 229);
+        border-radius: 25px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.06);
+        grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+
+        display: grid;
+        gap: 15px;
+    }
+
+    /* Individual post card */
+    .post-card {
+        background-color: white;
+        border-radius: 12px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+        width: 243px;
+    }
+
     .navigasi-bar {
         flex-direction: column;
         justify-content: center;

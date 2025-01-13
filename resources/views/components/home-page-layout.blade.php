@@ -57,7 +57,7 @@
                 <i class="fas fa-user-circle"></i>{{ $user->name }}
             </button>
             <div class="dropdown-content">
-                <a href="#"><i class="fa-solid fa-user"></i>My Work</a>
+                {{-- <a href="#"><i class="fa-solid fa-user"></i>My Work</a> --}}
                 <a href="/subscribe"><i class="fas fa-star"></i> Subscribe</a>
                 <a href="/policy"><i class="fas fa-info-circle"></i> Policy</a>
                 <a href="{{ route('setting', $user->id) }}"><i class="fas fa-cog"></i> Settings</a>
