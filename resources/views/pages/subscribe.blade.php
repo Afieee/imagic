@@ -29,7 +29,7 @@
                     </button>
                 @else
                     <button type="button" id="subscribe-btn" class="subscribe-btn">
-                        <span class="subscribe-price">Rp 25.000</span> - Subscribe Now
+                        <span class="subscribe-price">Rp 1.000</span> - Subscribe Now
                     </button>
                 @endif
 
