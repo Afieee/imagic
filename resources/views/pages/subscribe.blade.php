@@ -4,7 +4,8 @@
         <link rel="stylesheet" href="{{ asset('css/subscribe.css') }}">
         <link rel="icon" href="{{ asset('storage/images/imagic_logo.png') }}" type="image/png">
 
-        <script src="https://app.sandbox.midtrans.com/snap/snap.js" data-client-key="YOUR_CLIENT_KEY"></script>
+        <script src="https://app.midtrans.com/snap/snap.js" data-client-key="YOUR_PRODUCTION_CLIENT_KEY"></script>
+        {{-- <script src="https://app.sandbox.midtrans.com/snap/snap.js" data-client-key="YOUR_CLIENT_KEY"></script> --}}
     </head>
 
     <div class="subscribe-container">
@@ -13,7 +14,7 @@
             @csrf
             <input type="hidden" name="id_user" value="{{ $user->id }}">
             <input type="hidden" name="email" value="{{ $user->email }}">
-            <input type="hidden" name="amount" value="25000">
+            <input type="hidden" name="amount" value="1000">
 
             <div>
                 <p class="subscribe-text">Subscribe Now to Get Prioritize Post!</p>
@@ -50,7 +51,7 @@
                         body: JSON.stringify({
                             id_user: '{{ $user->id }}',
                             email: '{{ $user->email }}',
-                            amount: 25000
+                            amount: 1000
                         })
                     })
                     .then(response => response.json())

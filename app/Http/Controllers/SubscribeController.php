@@ -29,6 +29,7 @@ class SubscribeController extends Controller
         Config::$isSanitized = true;
         Config::$is3ds = true;
 
+
         // Data transaksi
         $transactionDetails = [
             'order_id' => 'SUB-' . time(), // Order ID unik

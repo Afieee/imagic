@@ -20,7 +20,8 @@
             <main>
                 <section>
                     <h2>Introduction</h2>
-                    <p>This usage policy is intended solely for educational purposes and knowledge development without
+                    <p>
+                        This usage policy is intended solely for educational purposes and knowledge development without
                         any
                         intention of engaging in plagiarism in any form.<br> The sources of information and inspiration
                         used
@@ -29,7 +30,7 @@
                 </section>
                 <section>
                     <h2>Permitted Use</h2>
-                    Using the services for personal and non-commercial purposes, <br>
+                    Using the services for personal and commercial purposes, <br>
                     Complying with all applicable laws and regulations, <br>
                     Respecting the rights of other users<br>
                 </section>
