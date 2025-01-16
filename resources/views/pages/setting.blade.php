@@ -2,10 +2,13 @@
 
     <head>
         <link rel="stylesheet" href="{{ asset('css/setting.css') }}">
+        <link rel="icon" href="{{ asset('storage/images/imagic_logo.png') }}" type="image/png">
+        <title>
+            Imagic | Setting
+        </title>
     </head>
-    <title>
-        Imagic | Setting
-    </title>
+
+
     <style>
         .pro-con {
             width: 100%;

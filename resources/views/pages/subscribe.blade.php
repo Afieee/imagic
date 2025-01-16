@@ -2,7 +2,8 @@
 
     <head>
         <link rel="stylesheet" href="{{ asset('css/subscribe.css') }}">
-        <!-- Midtrans Snap.js -->
+        <link rel="icon" href="{{ asset('storage/images/imagic_logo.png') }}" type="image/png">
+
         <script src="https://app.sandbox.midtrans.com/snap/snap.js" data-client-key="YOUR_CLIENT_KEY"></script>
     </head>
 
@@ -21,13 +22,11 @@
                     prioritized on the home page + get your ⭐ badge for premium user.
                 </p>
 
-                <!-- Jika user premium, tampilkan tombol "Anda adalah user premium" -->
                 @if ($user->premium == 'Premium')
                     <button type="button" class="subscribe-btn" disabled style="background-color: gray">
                         Anda adalah user premium
                     </button>
                 @else
-                    <!-- Jika user belum premium, tampilkan tombol Subscribe yang bisa diklik -->
                     <button type="button" id="subscribe-btn" class="subscribe-btn">
                         <span class="subscribe-price">Rp 25.000</span> - Subscribe Now
                     </button>
@@ -38,12 +37,10 @@
     </div>
 
     <script>
-        // Pastikan bahwa tombol dengan ID subscribe-btn ada sebelum menambahkan event listener
         const subscribeButton = document.getElementById('subscribe-btn');
 
         if (subscribeButton) {
             subscribeButton.addEventListener('click', function() {
-                // Mengirim request ke server untuk mendapatkan Snap Token
                 fetch('/process-payment', {
                         method: 'POST',
                         headers: {

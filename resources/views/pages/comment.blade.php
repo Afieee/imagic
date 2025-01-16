@@ -12,6 +12,8 @@
         <title>
             Imagic | Comment
         </title>
+        <link rel="icon" href="{{ asset('storage/images/imagic_logo.png') }}" type="image/png">
+
         <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet" />
     </head>
 

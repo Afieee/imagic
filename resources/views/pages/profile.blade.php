@@ -10,6 +10,8 @@
         </title>
         <link rel="stylesheet" href="{{ asset('css/upload.css') }}">
         <link rel="stylesheet" href="{{ asset('css/profile_header.css') }}">
+        <link rel="icon" href="{{ asset('storage/images/imagic_logo.png') }}" type="image/png">
+
 
 
         <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet" />
@@ -18,33 +20,23 @@
     <style>
         .like-btn i {
             color: gray;
-            /* Warna ikon merah */
         }
 
-        /* Warna tombol saat liked (ubah background tombol menjadi abu-abu) */
         .like-btn.liked {
             background-color: #d3d3d3;
-            /* Warna latar belakang abu-abu */
         }
 
-        /* Warna ikon tetap merah saat liked */
         .like-btn.liked i {
             color: #cc001f;
-            /* Warna ikon tetap merah */
         }
 
-        /* Warna tombol saat aktif */
         .like-btn.active {
             background-color: #d3d3d3;
-            /* Warna latar belakang abu-abu */
             color: #cc001f;
-            /* Warna ikon merah */
         }
 
-        /* Warna ikon saat aktif tetap merah */
         .like-btn.active i {
             color: #cc001f;
-            /* Warna ikon tetap merah */
         }
 
         .comment-btn i {

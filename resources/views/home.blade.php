@@ -3,6 +3,7 @@
     <head>
         <!-- Link CSS -->
         <title>Imagic | Home</title>
+        <link rel="icon" href="{{ asset('storage/images/imagic_logo.png') }}" type="image/png">
         <link href="{{ asset('css/home.css') }}" rel="stylesheet">
         <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
     </head>

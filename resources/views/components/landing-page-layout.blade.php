@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Imagic</title>
     <link rel="stylesheet" href="{{ asset('css/landing_page.css') }}">
+    <link rel="icon" href="{{ asset('storage/images/imagic_logo.png') }}" type="image/png">
+
     <link
         href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@500&family=Poppins:wght@400;600&family=Playfair+Display:wght@700&display=swap"
         rel="stylesheet">

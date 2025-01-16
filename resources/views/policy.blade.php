@@ -3,6 +3,8 @@
     <html lang="en">
 
     <head>
+        <link rel="icon" href="{{ asset('storage/images/imagic_logo.png') }}" type="image/png">
+
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Imagic | Policy</title>
