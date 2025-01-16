@@ -31,7 +31,8 @@
 
                 <div class="post-image">
                     @if ($item->post_image)
-                        <img src="{{ asset($item->post_image) }}" alt="Uploaded Image">
+                        <img src="{{ asset($item->post_image) }}" alt="Uploaded Image"
+                            title="Size : {{ $item->post_image_file_size }} | Extension : {{ $item->post_image_extension }} | Pixel : {{ $item->post_image_size }} ">
                     @else
                         <div class="no-image">No Image</div>
                     @endif
