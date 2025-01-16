@@ -48,10 +48,14 @@
                     style="margin-bottom: 20px">
                     @csrf
                     <input type="hidden" name="id_post" value="{{ $post->id_post }}">
-                    <button type="button"
-                        class="action-btn like-btn {{ $isLiked ? 'active' : '' }}"onclick="document.getElementById('like-form-{{ $post->id_post }}').submit();">
-                        <i class="fas fa-thumbs-up"></i>
-                    </button>
+                    <form action="{{ route('toggle-like') }}" method="POST" id="like-form-{{ $post->id_post }}">
+                        @csrf
+                        <input type="hidden" name="id_post" value="{{ $post->id_post }}">
+                        <button type="button" class="action-btn like-btn {{ $isLiked ? 'active liked' : '' }}"
+                            onclick="document.getElementById('like-form-{{ $post->id_post }}').submit();">
+                            <i class="fas fa-thumbs-up"></i>
+                        </button>
+                    </form>
 
                 </form>
                 <p>

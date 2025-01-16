@@ -15,6 +15,42 @@
         <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet" />
 
     </head>
+    <style>
+        .like-btn i {
+            color: gray;
+            /* Warna ikon merah */
+        }
+
+        /* Warna tombol saat liked (ubah background tombol menjadi abu-abu) */
+        .like-btn.liked {
+            background-color: #d3d3d3;
+            /* Warna latar belakang abu-abu */
+        }
+
+        /* Warna ikon tetap merah saat liked */
+        .like-btn.liked i {
+            color: #cc001f;
+            /* Warna ikon tetap merah */
+        }
+
+        /* Warna tombol saat aktif */
+        .like-btn.active {
+            background-color: #d3d3d3;
+            /* Warna latar belakang abu-abu */
+            color: #cc001f;
+            /* Warna ikon merah */
+        }
+
+        /* Warna ikon saat aktif tetap merah */
+        .like-btn.active i {
+            color: #cc001f;
+            /* Warna ikon tetap merah */
+        }
+
+        .comment-btn i {
+            color: orange;
+        }
+    </style>
 
     <body>
         <div class="profile-header">
@@ -73,9 +109,11 @@
                                     @csrf
                                     <input type="hidden" name="id_post" value="{{ $item->id_post }}">
                                     <button type="button"
-                                        class="action-btn like-btn {{ $isLiked ? 'active' : '' }}"onclick="document.getElementById('like-form-{{ $item->id_post }}').submit();">
+                                        class="action-btn like-btn {{ $isLiked ? 'active liked' : '' }}"
+                                        onclick="document.getElementById('like-form-{{ $item->id_post }}').submit();">
                                         <i class="fas fa-thumbs-up"></i>
                                     </button>
+                                </form>
 
                                 </form>
                                 <a href="{{ route('comment', $item->id_post) }}" style="text-decoration: none">
@@ -133,6 +171,7 @@
     </body>
 
     </html>
+    <script src="{{ asset('js/home.js') }}"></script>
 
 
 </x-profile-page-layout>

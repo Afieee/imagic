@@ -328,12 +328,31 @@
         background-color: #eaeaea;
     }
 
+
+
     .like-btn i {
+        color: gray;
+    }
+
+    .like-btn.liked {
+        background-color: #d3d3d3;
+    }
+
+    .like-btn.liked i {
+        color: #cc001f;
+    }
+
+    .like-btn.active {
+        background-color: #d3d3d3;
+        color: #cc001f;
+    }
+
+    .like-btn.active i {
         color: #cc001f;
     }
 
     .comment-btn i {
-        color: #3498db;
+        color: orange;
     }
 
     .action-btn:active {
@@ -476,27 +495,20 @@
             text-align: left;
         }
 
-        /* Gaya untuk ikon di dalam a dan button */
         .dropdown-content a i,
         .dropdown-content button.logout-btn i {
             color: #888;
-            /* Samakan warna ikon (abu-abu) */
             margin-right: 8px;
-            /* Beri jarak antara ikon dan teks */
         }
 
-        /* Efek hover untuk elemen a dan button */
         .dropdown-content a:hover,
         .dropdown-content button.logout-btn:hover {
             background-color: #f0f0f0;
-            /* Efek hover */
         }
 
-        /* Efek hover untuk ikon di a dan button */
         .dropdown-content a:hover i,
         .dropdown-content button.logout-btn:hover i {
             color: black;
-            /* Warna ikon saat hover */
         }
 
 
@@ -548,13 +560,9 @@
     .toast-success {
         position: fixed;
         top: 10%;
-        /* Posisi atas relatif terhadap layar */
         left: 50%;
-        /* Posisi kiri relatif terhadap layar */
         transform: translateX(-50%);
-        /* Memastikan toast berada tepat di tengah */
         background-color: #4caf50;
-        /* Warna hijau untuk notifikasi sukses */
         color: white;
         border-radius: 8px;
         box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
@@ -571,11 +579,8 @@
 
     .toast-icon {
         font-size: 18px;
-        /* Ukuran ikon */
         color: #d4fdd4;
-        /* Warna hijau terang sebagai pelengkap */
         margin-right: 10px;
-        /* Memberi jarak dengan pesan */
     }
 
     .toast-close {
@@ -588,7 +593,6 @@
         color: #c1eac1;
     }
 
-    /* Animasi untuk toast */
     @keyframes slideIn {
         from {
             opacity: 0;
