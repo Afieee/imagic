@@ -19,7 +19,7 @@
             <div>
                 <p class="subscribe-text">Subscribe Now to Get Prioritize Post!</p>
                 <p class="subscribe-description">
-                    Join our community and enjoy premium features for just Rp 25.000 per month. Get your Art to be
+                    Join our community and enjoy premium features for just Rp 1.000 per month. Get your Art to be
                     prioritized on the home page + get your ⭐ badge for premium user.
                 </p>
 
