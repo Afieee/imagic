@@ -39,5 +39,6 @@ Route::middleware('auth')->group(function () {
     Route::get('/setting/{sessionId}', [ProfileController::class, 'setting'])->name('setting');
     Route::put('/edit-profile/{sessionId}', [ProfileController::class, 'updateProfile'])->name('updateProfile');
     Route::post('/process-payment/', [SubscribeController::class, 'processPayment'])->name('process.payment');
+    // Route::post('/midtrans-notification', [SubscribeController::class, 'handleNotification'])->name('midtrans.notification');
     Route::post('/logout', [UsersController::class, 'logout']);
 });

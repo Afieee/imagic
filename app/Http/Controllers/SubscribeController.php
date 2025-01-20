@@ -29,7 +29,6 @@ class SubscribeController extends Controller
         Config::$isSanitized = true;
         Config::$is3ds = true;
 
-
         // Data transaksi
         $transactionDetails = [
             'order_id' => 'SUB-' . time(), // Order ID unik
@@ -62,6 +61,9 @@ class SubscribeController extends Controller
             $user = User::find($request->id_user);
             if ($user) {
                 $user->update(['premium' => 'Premium']);
+
+                // Update session setelah status premium diperbarui
+                session()->put('user_premium', 'Premium'); // Perbarui session
             }
 
             // Generate Snap Token

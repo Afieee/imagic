@@ -4,12 +4,10 @@
         <link rel="stylesheet" href="{{ asset('css/subscribe.css') }}">
         <link rel="icon" href="{{ asset('storage/images/imagic_logo.png') }}" type="image/png">
 
-        <script src="https://app.midtrans.com/snap/snap.js" data-client-key="YOUR_PRODUCTION_CLIENT_KEY"></script>
-        {{-- <script src="https://app.sandbox.midtrans.com/snap/snap.js" data-client-key="YOUR_CLIENT_KEY"></script> --}}
+        <script src="https://app.sandbox.midtrans.com/snap/snap.js" data-client-key="YOUR_CLIENT_KEY"></script>
     </head>
 
     <div class="subscribe-container">
-
         <form action="/process-payment" id="subscribe-form" method="POST">
             @csrf
             <input type="hidden" name="id_user" value="{{ $user->id }}">
@@ -17,17 +15,22 @@
             <input type="hidden" name="amount" value="1000">
 
             <div>
-                <p class="subscribe-text">Subscribe Now to Get Prioritize Post!</p>
-                <p class="subscribe-description">
-                    Join our community and enjoy premium features for just Rp 1.000 per month. Get your Art to be
-                    prioritized on the home page + get your ⭐ badge for premium user.
-                </p>
 
-                @if ($user->premium == 'Premium')
+                @if (session('user_premium') == 'Premium' || $user->premium == 'Premium')
+                    <p class="subscribe-text"> Thanks For Your Subscription, Enjoy Your Premium Feature
+                    </p>
+                    <p class="subscribe-description">
+                        Your Post Will Be Highlighted & Prioritized For Everyone, You Have Your ⭐ Badge!
+                    </p>
                     <button type="button" class="subscribe-btn" disabled style="background-color: gray">
-                        Anda adalah user premium
+                        You Are Already Premium User
                     </button>
                 @else
+                    <p class="subscribe-text">Subscribe Now to Get Prioritize Post!</p>
+                    <p class="subscribe-description">
+                        Join our community and enjoy premium features for just Rp 1.000. Get your Art to be
+                        prioritized on the home page + get your ⭐ badge for premium user.
+                    </p>
                     <button type="button" id="subscribe-btn" class="subscribe-btn">
                         <span class="subscribe-price">Rp 1.000</span> - Subscribe Now
                     </button>
@@ -62,6 +65,10 @@
                                 onSuccess: function(result) {
                                     alert('Pembayaran berhasil! Terima kasih telah berlangganan.');
                                     console.log(result);
+
+                                    // Perbarui status premium di session
+                                    sessionStorage.setItem('user_premium', 'Premium');
+                                    window.location.href = '/subscribe';
                                 },
                                 onPending: function(result) {
                                     alert('Pembayaran Anda sedang diproses.');
