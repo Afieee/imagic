@@ -159,4 +159,7 @@
             <button type="submit" class="submit-btn">Update Profile</button>
         </form>
     </div>
+
+    <script src="{{ asset('js/home-drop-down.js') }}"></script>
+
 </x-home-page-layout>

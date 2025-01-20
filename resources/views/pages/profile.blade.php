@@ -160,6 +160,8 @@
                             .catch(error => console.error('Error:', error));
                     });
                 </script>
+                <script src="{{ asset('js/home-drop-down.js') }}"></script>
+
     </body>
 
     </html>

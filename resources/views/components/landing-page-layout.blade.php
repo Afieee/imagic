@@ -53,6 +53,14 @@
 </body>
 
 
+        <script>
+            document.querySelector('.search-bar').addEventListener('keydown', function(event) {
+                if (event.key === 'Enter') {
+                    event.preventDefault();
+                    document.getElementById('searchForm').submit();
+                }
+            });
+        </script>
 <script src="{{ asset('js/landing_page.js') }}"></script>
 
 </html>

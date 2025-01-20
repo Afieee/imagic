@@ -6,7 +6,12 @@
             href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@500&family=Poppins:wght@400;600&family=Playfair+Display:wght@700&display=swap"
             rel="stylesheet">
         <link rel="stylesheet" href="{{ asset('css/upload.css') }}">
+        <link href="{{ asset('css/home.css') }}" rel="stylesheet">
+
     </head>
+    <style>
+
+    </style>
     <div class="upload-container">
         <h1 class="upload-title"> Upload Your Creativity </h1>
         @if (session('success'))
@@ -57,5 +62,5 @@
         </form>
     </div>
     <script src="{{ asset('js/upload-preview.js') }}"></script>
-
+    <script></script>
 </x-home-page-layout>

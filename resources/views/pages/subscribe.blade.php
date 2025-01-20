@@ -83,4 +83,7 @@
             });
         }
     </script>
+
+    <script src="{{ asset('js/home-drop-down.js') }}"></script>
+
 </x-home-page-layout>

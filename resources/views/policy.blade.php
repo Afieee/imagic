@@ -45,6 +45,7 @@
             </main>
         </center>
     </body>
+    <script src="{{ asset('js/home-drop-down.js') }}"></script>
 
     </html>
 

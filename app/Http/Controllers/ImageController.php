@@ -27,8 +27,6 @@ class ImageController extends Controller
 
         return view('image.upload', [
             'user' => $user,
-
-
         ]);
     }
 
@@ -43,40 +41,26 @@ class ImageController extends Controller
 
         $postingan = Post::with('user')->get();
 
-        // Ambil path file yang di-upload
         $imagePath = $request->file('image')->path();
         $watermarkPath = $request->file('watermark') ? $request->file('watermark')->path() : null;
 
-        // Ambil nama file asli dan ekstensi
         $originalImageName = pathinfo($request->file('image')->getClientOriginalName(), PATHINFO_FILENAME);
         $imageExtension = $request->file('image')->getClientOriginalExtension();
 
-        // Generate nama file unik menggunakan nama asli + timestamp atau uniqid
         $watermarkedImageName = $originalImageName . 'watermarked' . uniqid() . '.' . $imageExtension;
 
-        // Tentukan path lengkap untuk menyimpan gambar yang sudah di-watermark
         $watermarkedImagePath = storage_path('app/public/' . $watermarkedImageName);
         $user = Auth::user();
 
         try {
-            // Add watermark if provided
             $watermarkedImage = $watermarkPath
                 ? $this->imageService->addWatermark($imagePath, $watermarkPath)
-                : file_get_contents($imagePath); // Use the original image if no watermark
-
-            // Simpan gambar yang sudah di-watermark dengan nama dinamis
+                : file_get_contents($imagePath);
             file_put_contents($watermarkedImagePath, $watermarkedImage);
 
-            // Get metadata
             $metadata = $this->imageService->getMetadata($watermarkedImagePath);
-
-            // Generate hashtags
             $hashtags = $this->imageService->generateHashtags($imagePath);
-
-            // Get user ID from authenticated session
             $userId = Auth::user()->id;
-
-            // Prepare data for the post table
             $postData = [
                 'post_image' => 'storage/' . $watermarkedImageName,
                 'post_image_file_size' => $metadata['data']['FileSize'],
@@ -88,10 +72,8 @@ class ImageController extends Controller
                 'user_id' => $userId,
             ];
 
-            // Insert data into the post table
             Post::create($postData);
 
-            // Redirect ke rute home dengan data tambahan
             return redirect()->route('home')->with([
                 'watermarkedImagePath' => asset('storage/' . $watermarkedImageName),
                 'metadata' => $metadata,

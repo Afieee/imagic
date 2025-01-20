@@ -79,6 +79,6 @@
 </body>
 
 
-<script src="{{ asset('js/home-drop-down.js') }}"></script>
+<script src="{{ asset('js/home.js') }}"></script>
 
 </html>
