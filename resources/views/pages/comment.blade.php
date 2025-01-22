@@ -13,6 +13,9 @@
             Imagic | Comment
         </title>
         <link rel="icon" href="{{ asset('storage/images/imagic_logo.png') }}" type="image/png">
+        <link
+            href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500&family=Nunito:wght@300;400;600&family=Raleway:wght@300;400;600&family=Josefin+Sans:wght@300;400;600&display=swap"
+            rel="stylesheet">
 
         <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet" />
     </head>
@@ -57,13 +60,21 @@
                             onclick="document.getElementById('like-form-{{ $post->id_post }}').submit();">
                             <i class="fas fa-thumbs-up"></i>
                         </button>
+
                     </form>
 
                 </form>
+
+                <div class="likes">
+                    <p class="like-count">
+                        Liked by <strong>{{ $post->post_likes->count() }}</strong> Other </p>
+                </div>
                 <p>
+
                     <strong>
                         {{ $post->user->name }}
                     </strong>
+
                     {!! nl2br(e($post->post_caption)) !!}
             </div>
             <div class="comments-container">
@@ -85,11 +96,11 @@
                     @endforeach
                 </div>
             </div>
-            <div class="likes">
+            {{-- <div class="likes">
                 <p class="like-count">
                     {{ $post->post_likes->count() }} Liked
                 </p>
-            </div>
+            </div> --}}
             <form action="/commented" method="POST">
                 @csrf
                 <div class="add-comment">

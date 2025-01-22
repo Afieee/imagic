@@ -6,6 +6,50 @@
         margin: 0;
         padding: 0;
         box-sizing: border-box;
+        font-family: 'Quicksand', 'Nunito', 'Raleway', 'Josefin Sans', sans-serif;
+        font-size: 16px;
+        color: #444;
+        /* Warna teks */
+        line-height: 1.7;
+        /* Spasi antar baris untuk memberikan ruang lebih nyaman */
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        font-family: 'Josefin Sans', sans-serif;
+        font-weight: 600;
+        /* Untuk heading yang lebih berkarakter */
+        color: #222;
+    }
+
+    p,
+    span,
+    a,
+    button {
+        font-family: 'Josefin Sans', sans-serif;
+        font-weight: 400;
+    }
+
+    button {
+        font-family: 'Raleway', sans-serif;
+        font-weight: 500;
+        background-color: #f0f0f0;
+        /* Warna lembut untuk tombol */
+        border: none;
+        padding: 10px 20px;
+        border-radius: 8px;
+        /* Tambahkan sudut melengkung */
+        cursor: pointer;
+        transition: all 0.3s ease;
+    }
+
+    button:hover {
+        background-color: #ddd;
+        transform: scale(1.05);
     }
 
     .navigasi-bar {
@@ -83,6 +127,7 @@
     .search-icon {
         position: absolute;
         right: 15px;
+        top: 10px;
         font-size: 18px;
         color: #888;
         pointer-events: none;
@@ -368,10 +413,7 @@
         transition: color 0.3s ease, font-size 0.3s ease;
     }
 
-    .like-count:hover {
-        color: #4CAF50;
-        font-size: 16px;
-    }
+
 
 
     hr {
@@ -527,7 +569,7 @@
 
         /* TONI */
         .main {
-            width: 60%;
+            width: 75%;
             min-height: 90vh;
 
             height: auto;
