@@ -76,12 +76,11 @@ class UsersController extends Controller
                         $q->where('name', 'like', "%{$katakunci}%");
                     });
             })
-            ->join('users', 'post.user_id', '=', 'users.id') // Gabungkan dengan tabel 'users'
-            ->orderByRaw('users.premium = "Premium" DESC') // Mengurutkan berdasarkan atribut 'premium'
-            ->orderBy('post.created_at', 'desc') // Mengurutkan postingan berdasarkan waktu
+            ->join('users', 'post.user_id', '=', 'users.id')
+            ->select('post.*', 'users.premium as user_premium')
+            ->orderByRaw('users.premium = "Premium" DESC')
+            ->orderBy('post.created_at', 'desc')
             ->get();
-
-
 
         $user = $request->session()->get('user');
 

@@ -68,7 +68,8 @@
                 <div class="post-content">
                     <span class="like-count">Liked by <strong>{{ $item->post_likes->count() }}</strong> others</span>
 
-                    Posted {{ $item->created_at->diffForHumans() }}
+                    <p>Posted {{ $item->created_at->diffForHumans() }}</p>
+
                     <hr>
                     <p class="post-description">{!! nl2br(e($item->post_caption)) !!}</p>
                 </div>

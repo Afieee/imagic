@@ -17,7 +17,8 @@ class Post extends Model
         'post_caption',
         'post_status',
         'user_id',
-        'post_hashtags'
+        'post_hashtags',
+        'created_at',
     ];
 
     public function user()
