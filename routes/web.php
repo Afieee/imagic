@@ -38,7 +38,8 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile/{user_id}', [ProfileController::class, 'getProfile'])->name('profile');
     Route::get('/setting/{sessionId}', [ProfileController::class, 'setting'])->name('setting');
     Route::put('/edit-profile/{sessionId}', [ProfileController::class, 'updateProfile'])->name('updateProfile');
-    Route::post('/process-payment/', [SubscribeController::class, 'processPayment'])->name('process.payment');
-    // Route::post('/midtrans-notification', [SubscribeController::class, 'handleNotification'])->name('midtrans.notification');
+    Route::post('/generate-snap-token', [SubscribeController::class, 'generateSnapToken'])->name('generate.snap.token');
+    Route::post('/post-payment-success', [SubscribeController::class, 'postPaymentSuccess'])->name('post.payment.success');
+
     Route::post('/logout', [UsersController::class, 'logout']);
 });

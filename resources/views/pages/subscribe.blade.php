@@ -4,20 +4,17 @@
         <link rel="stylesheet" href="{{ asset('css/subscribe.css') }}">
         <link rel="icon" href="{{ asset('storage/images/imagic_logo.png') }}" type="image/png">
 
-        <script src="https://app.sandbox.midtrans.com/snap/snap.js" data-client-key="YOUR_CLIENT_KEY"></script>
-        {{-- <script src="https://app.midtrans.com/snap/snap.js" data-client-key="YOUR_CLIENT_KEY"></script> --}}
-
+        <script src="https://app.midtrans.com/snap/snap.js" data-client-key="YOUR_CLIENT_KEY"></script>
     </head>
 
     <div class="subscribe-container">
-        <form action="/process-payment" id="subscribe-form" method="POST">
+        <form id="subscribe-form" method="POST">
             @csrf
-            <input type="hidden" name="id_user" value="{{ $user->id }}">
-            <input type="hidden" name="email" value="{{ $user->email }}">
-            <input type="hidden" name="amount" value="1000">
+            <input type="hidden" id="id_user" value="{{ $user->id }}">
+            <input type="hidden" id="email" value="{{ $user->email }}">
+            <input type="hidden" id="amount" value="1000">
 
             <div>
-
                 @if (session('user_premium') == 'Premium' || $user->premium == 'Premium')
                     <p class="subscribe-text"> Thanks For Your Subscription, Enjoy Your Premium Feature
                     </p>
@@ -37,7 +34,6 @@
                         <span class="subscribe-price">Rp 1.000</span> - Subscribe Now
                     </button>
                 @endif
-
             </div>
         </form>
     </div>
@@ -47,30 +43,53 @@
 
         if (subscribeButton) {
             subscribeButton.addEventListener('click', function() {
-                fetch('/process-payment', {
+                fetch('/generate-snap-token', {
                         method: 'POST',
                         headers: {
                             'Content-Type': 'application/json',
                             'X-CSRF-TOKEN': '{{ csrf_token() }}'
                         },
                         body: JSON.stringify({
-                            id_user: '{{ $user->id }}',
-                            email: '{{ $user->email }}',
-                            amount: 1000
+                            id_user: document.getElementById('id_user').value,
+                            email: document.getElementById('email').value,
+                            amount: document.getElementById('amount').value
                         })
                     })
                     .then(response => response.json())
                     .then(data => {
                         if (data.snapToken) {
-                            // Memanggil Midtrans Snap
                             window.snap.pay(data.snapToken, {
                                 onSuccess: function(result) {
                                     alert('Pembayaran berhasil! Terima kasih telah berlangganan.');
-                                    console.log(result);
 
-                                    // Perbarui status premium di session
-                                    sessionStorage.setItem('user_premium', 'Premium');
-                                    window.location.href = '/subscribe';
+                                    // Panggil endpoint untuk menyimpan data setelah pembayaran berhasil
+                                    fetch('/post-payment-success', {
+                                            method: 'POST',
+                                            headers: {
+                                                'Content-Type': 'application/json',
+                                                'X-CSRF-TOKEN': '{{ csrf_token() }}'
+                                            },
+                                            body: JSON.stringify({
+                                                id_user: document.getElementById(
+                                                    'id_user').value,
+                                                email: document.getElementById('email')
+                                                    .value,
+                                                amount: document.getElementById(
+                                                    'amount').value
+                                            })
+                                        })
+                                        .then(response => response.json())
+                                        .then(data => {
+                                            if (data.success) {
+                                                window.location.href = '/subscribe';
+                                            } else {
+                                                alert('Error: ' + data.error);
+                                            }
+                                        })
+                                        .catch(error => {
+                                            console.error('Error:', error);
+                                            alert('Terjadi kesalahan, coba lagi nanti.');
+                                        });
                                 },
                                 onPending: function(result) {
                                     alert('Pembayaran Anda sedang diproses.');

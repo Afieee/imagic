@@ -21,33 +21,43 @@ class SubscribeController extends Controller
 
 
 
-    public function processPayment(Request $request)
+    public function generateSnapToken(Request $request)
     {
-        // Konfigurasi Midtrans
         Config::$serverKey = env('MIDTRANS_SERVER_KEY');
         Config::$isProduction = env('MIDTRANS_IS_PRODUCTION', false);
         Config::$isSanitized = true;
         Config::$is3ds = true;
 
-        // Data transaksi
         $transactionDetails = [
-            'order_id' => 'SUB-' . time(), // Order ID unik
-            'gross_amount' => $request->amount, // Total pembayaran
+            'order_id' => 'SUB-' . time(),
+            'gross_amount' => $request->amount,
         ];
 
-        // Data pelanggan
         $customerDetails = [
             'first_name' => $request->email,
             'email' => $request->email,
         ];
 
-        // Parameter untuk Midtrans
         $params = [
             'transaction_details' => $transactionDetails,
             'customer_details' => $customerDetails,
         ];
 
-        // Simpan data ke tabel subscribe
+        try {
+            $snapToken = Snap::getSnapToken($params);
+
+            return response()->json([
+                'snapToken' => $snapToken,
+            ]);
+        } catch (\Exception $e) {
+            return response()->json([
+                'error' => $e->getMessage(),
+            ], 500);
+        }
+    }
+
+    public function postPaymentSuccess(Request $request)
+    {
         $data = [
             'id_user' => $request->id_user,
             'email' => $request->email,
@@ -61,21 +71,12 @@ class SubscribeController extends Controller
             $user = User::find($request->id_user);
             if ($user) {
                 $user->update(['premium' => 'Premium']);
-
-                // Update session setelah status premium diperbarui
-                session()->put('user_premium', 'Premium'); // Perbarui session
+                session()->put('user_premium', 'Premium');
             }
 
-            // Generate Snap Token
-            $snapToken = Snap::getSnapToken($params);
-
-            return response()->json([
-                'snapToken' => $snapToken,
-            ]);
+            return response()->json(['success' => true]);
         } catch (\Exception $e) {
-            return response()->json([
-                'error' => $e->getMessage(),
-            ], 500);
+            return response()->json(['error' => $e->getMessage()], 500);
         }
     }
 }
