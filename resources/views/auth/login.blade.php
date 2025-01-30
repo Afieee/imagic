@@ -9,21 +9,56 @@
     <link rel="stylesheet" href="{{ asset('css/login.css') }}">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
     <link rel="icon" href="{{ asset('storage/images/imagic_logo.png') }}" type="image/png">
-
 </head>
 
-<body>
+<style>
+    /* Toast Notification */
+    .toast-success {
+        position: fixed;
+        top: 10%;
+        left: 50%;
+        transform: translateX(-50%);
+        background-color: #4caf50;
+        color: white;
+        border-radius: 8px;
+        box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+        padding: 15px 20px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 10px;
+        font-size: 14px;
+        font-weight: 500;
+        z-index: 1000;
+        animation: slideIn 0.5s ease-out;
+    }
 
-    @if (session('loginError'))
-        <div class="toast-error">
-            <span class="toast-icon">&#9888;</span> <!-- Ikon peringatan -->
-            <span class="toast-message">{{ session('loginError') }}</span>
+    .toast-icon {
+        font-size: 18px;
+        color: #d4fdd4;
+        margin-right: 10px;
+    }
+
+    .toast-close {
+        cursor: pointer;
+        font-size: 18px;
+        color: white;
+    }
+
+    .toast-close:hover {
+        color: #c1eac1;
+    }
+</style>
+
+<body>
+    <!-- Toast Notification for Success -->
+    @if (session('success'))
+        <div class="toast-success">
+            <span class="toast-icon">&#10004;</span>
+            <span class="toast-message">{{ session('success') }}</span>
             <span class="toast-close" onclick="closeToast()">&#10005;</span>
         </div>
     @endif
-
-
-
 
     <div class="login-container">
         <div class="login-box">
@@ -53,12 +88,45 @@
         </div>
     </div>
 
-
-
-
-
-
     <script src="{{ asset('js/login.js') }}"></script>
+
+    <script>
+        // Toast functionality
+        function closeToast() {
+            const toast = document.querySelector('.toast-success');
+            if (toast) {
+                fadeOutAndRemoveToast(toast);
+            }
+        }
+
+        function fadeOutAndRemoveToast(toast) {
+            toast.style.animation = 'fadeOut 0.5s ease-out forwards';
+
+            setTimeout(() => {
+                if (toast.parentNode) {
+                    toast.parentNode.removeChild(toast);
+                }
+            }, 500);
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const toast = document.querySelector('.toast-success');
+            if (toast) {
+                setTimeout(() => fadeOutAndRemoveToast(toast), 1500);
+            }
+        });
+
+        const style = document.createElement('style');
+        style.innerHTML = `
+            @keyframes fadeOut {
+                to {
+                    opacity: 0;
+                    transform: translateY(-10%);
+                }
+            }
+        `;
+        document.head.appendChild(style);
+    </script>
 </body>
 
 </html>

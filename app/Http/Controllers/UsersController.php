@@ -19,9 +19,7 @@ class UsersController extends Controller
         ], [
             'name.required' => 'Nama harus diisi',
             'name.min' => 'Nama harus memiliki minimal 3 karakter',
-
             'email.required' => 'Email harus diisi',
-
             'password.required' => 'Password harus diisi',
             'password.min' => 'Password minimal memili minimal 8 karakter'
         ]);
@@ -30,7 +28,7 @@ class UsersController extends Controller
 
         User::create($validateData);
 
-        return redirect('/login')->with('success', 'Akun Berhasil Dibuat');
+        return redirect('/login')->with('success', 'Account Created');
     }
 
     public function login(Request $request)
