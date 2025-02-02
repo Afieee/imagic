@@ -67,12 +67,14 @@
 
                 <div class="likes">
                     <p class="like-count">
-                        Liked by <strong>{{ $post->post_likes->count() }}</strong> Other </p>
+                        Liked by <strong
+                            style="font-weight: 900; font-size: 1.0em; color: #555;">{{ $post->post_likes->count() }}</strong>
+                        Other </p>
                 </div>
                 <p>
 
                     <strong>
-                        {{ $post->user->name }}
+                        {{ $post->user->name }} :
                     </strong>
 
                     {!! nl2br(e($post->post_caption)) !!}
@@ -107,7 +109,7 @@
                     <input placeholder="Add a comment..." type="text" name="comment">
                     <input type="text" name="id_post" value="{{ $post->id_post }}" hidden>
                     <input type="text" name="id_user" value="{{ $user->id }}" hidden>
-                    <button type="submit">
+                    <button type="submit" style="color:rgb(204,0,31);">
                         Post
                     </button>
                 </div>

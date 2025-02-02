@@ -1,6 +1,7 @@
 <x-home-page-layout :user="$user">
 
     <head>
+        <title>Imagic | Subscribe</title>
         <link rel="stylesheet" href="{{ asset('css/subscribe.css') }}">
         <link rel="icon" href="{{ asset('storage/images/imagic_logo.png') }}" type="image/png">
 

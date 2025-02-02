@@ -12,7 +12,10 @@ class ProfileController extends Controller
 {
     public function getProfile(Request $request, $user_id)
     {
-        $postingan = Post::where('user_id', $user_id)->with('user')->get();
+        $postingan = Post::where('user_id', $user_id)
+            ->with('user')
+            ->orderBy('created_at', 'desc')
+            ->get();
         $tangkep = $request->$user_id;
         $jumlahFollower = Follow::where('id_followed', $user_id)
             ->where('follow', 1)

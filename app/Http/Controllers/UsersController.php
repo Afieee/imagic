@@ -67,7 +67,8 @@ class UsersController extends Controller
     {
         $katakunci = $request->katakunci;
 
-        $data = Post::with('user')
+        $data = Post::with(['user', 'comment'])
+            ->withCount('comment')
             ->when($katakunci, function ($query) use ($katakunci) {
                 $query->where('post_hashtags', 'like', "%{$katakunci}%")
                     ->orWhereHas('user', function ($q) use ($katakunci) {
@@ -82,6 +83,7 @@ class UsersController extends Controller
 
         $user = $request->session()->get('user');
 
+        // dd($data);
         return view('home', [
             'success' => session('success'),
             'user' => $user,

@@ -11,6 +11,11 @@
             rel="stylesheet">
 
     </head>
+    <style>
+        .comment-count:hover {
+            text-decoration: underline;
+        }
+    </style>
 
     @if (session('success'))
         <div class="toast-success">
@@ -66,9 +71,18 @@
                 </div>
 
                 <div class="post-content">
-                    <span class="like-count">Liked by <strong>{{ $item->post_likes->count() }}</strong> others</span>
+                    <p class="like-count">Posted {{ $item->created_at->diffForHumans() }}</p>
+                    <span class="like-count">Liked by <strong
+                            style="font-weight: 900; font-size: 1.0em; color: #555;">{{ $item->post_likes->count() }}</strong>
+                        others</span>
+                    @if ($item->comment->count() > 0)
+                        <a href="{{ route('comment', $item->id_post) }}" style="text-decoration: none">
+                            <span class="like-count comment-count">View <strong
+                                    style="font-weight: 900; font-size: 1.0em; color: #555;">{{ $item->comment->count() }}</strong>
+                                Comments</span>
+                        </a>
+                    @endif
 
-                    <p>Posted {{ $item->created_at->diffForHumans() }}</p>
 
                     <hr>
                     <p class="post-description">{!! nl2br(e($item->post_caption)) !!}</p>

@@ -55,7 +55,7 @@
                 {{ $postingan->first()->user->name ?? $user->name }}
             </h1>
             <div>
-                {{ $postingan->first()->user->bio ?? $user->bio }}
+                {{ $postingan->first()->user->bio }}
 
             </div>
             <div class="stats">
