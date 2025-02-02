@@ -86,7 +86,7 @@
                     @elseif ($item->comment->count() > 1)
                         <a href="{{ route('comment', $item->id_post) }}" style="text-decoration: none">
                             <span class="like-count comment-count">
-                                View <strong style="font-weight: 900; font-size: 1.0em; color: #555;">
+                                View all <strong style="font-weight: 900; font-size: 1.0em; color: #555;">
                                     {{ $item->comment->count() }}
                                 </strong> Comments
                             </span>
