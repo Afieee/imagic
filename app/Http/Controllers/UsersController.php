@@ -52,7 +52,12 @@ class UsersController extends Controller
 
     public function halamanIndex(Request $request)
     {
-        $postingan = Post::with('user')->orderBy('created_at', 'desc')->get();
+        $postingan = Post::with('user')    
+        ->join('users', 'post.user_id', '=', 'users.id')
+        ->select('post.*', 'users.premium as user_premium')
+        ->orderByRaw('users.premium = "Premium" DESC')
+        ->orderBy('post.created_at', 'desc')
+        ->get();;
 
         return view('index', [
             'postingan' => $postingan
