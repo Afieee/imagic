@@ -96,6 +96,10 @@
 
                     <hr>
                     <p class="post-description">{!! nl2br(e($item->post_caption)) !!}</p>
+                    <hr>
+
+                    <p class="post-description">#{{ str_replace(' ', ' #', $item->post_hashtags) }}</p>
+
                 </div>
             </div>
         @endforeach
