@@ -16,7 +16,7 @@
 
 <body>
     <nav class="navigasi-bar">
-        <a href="index.html" class="a-logo nav-items">
+        <a href="/login" class="a-logo nav-items">
             <img src="{{ asset('storage/images/imagic_logo.png') }}" alt="Logo Unikom" class="logo-brand">
         </a>
 
@@ -34,17 +34,12 @@
 
 
         <div class="search-container">
-            <input type="text" class="search-bar" placeholder="Search your color today...">
-            <span class="search-icon">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20"
-                    fill="#888">
-                    <path
-                        d="M10 2a8 8 0 105.293 14.707l5.32 5.32a1 1 0 001.415-1.415l-5.32-5.32A8 8 0 0010 2zm0 2a6 6 0 110 12A6 6 0 0110 4z" />
-                </svg>
-            </span>
+
+        </div>
+        <div class="search-container">
         </div>
 
-        <a href="/login" class="login">Log-in</a>
+        <a href="/login" class="login" style="text-decoration:none; color:black;">Log-in</a>
     </nav>
 
     <main class="main">
@@ -53,14 +48,14 @@
 </body>
 
 
-        <script>
-            document.querySelector('.search-bar').addEventListener('keydown', function(event) {
-                if (event.key === 'Enter') {
-                    event.preventDefault();
-                    document.getElementById('searchForm').submit();
-                }
-            });
-        </script>
+<script>
+    document.querySelector('.search-bar').addEventListener('keydown', function(event) {
+        if (event.key === 'Enter') {
+            event.preventDefault();
+            document.getElementById('searchForm').submit();
+        }
+    });
+</script>
 <script src="{{ asset('js/landing_page.js') }}"></script>
 
 </html>
