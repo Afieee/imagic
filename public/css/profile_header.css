@@ -5,10 +5,21 @@ body {
     background-color: #f5f5f5;
 }
 
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* Agar kontennya tetap rapi di tengah */
+    width: 100%;
+}
+
 .profile-header {
     padding: 20px;
     background-color: #fff;
     border-bottom: 1px solid #ddd;
+    text-align: center;
+    /* Agar konten di tengah */
+    width: 100%;
 }
 
 .profile-header img {
@@ -33,7 +44,6 @@ body {
     color: #fff;
     border: none;
     padding: 10px 20px;
-    margin-bottom: 50px;
     margin: 10px 5px;
     border-radius: 20px;
     cursor: pointer;
@@ -49,44 +59,29 @@ body {
     margin: 10px 0;
 }
 
-
-
 .profile-header .website {
     color: #000;
     text-decoration: none;
-    /* margin-bottom: 50px; */
 }
 
 .profile-header .website:hover {
     text-decoration: none;
 }
 
-.profile-header .cover-photo img {
+.cover-photo {
     width: 100%;
-    height: auto;
-    border-radius: 10px;
-}
-
-.tabs {
+    margin-top: 30px;
+    /* Menambahkan jarak agar tidak terlalu dekat */
     display: flex;
     justify-content: center;
-    background-color: #fff;
-    border-bottom: 1px solid #ddd;
 }
 
-.tabs a {
-    padding: 15px 20px;
-    text-decoration: none;
-    color: #333;
-    font-weight: bold;
+.cover-photo .post-container {
+    width: 90%;
+    max-width: 800px;
 }
 
-.tabs a.active {
-    border-bottom: 2px solid #e60023;
-    color: #e60023;
-}
-
-
+/* Responsive */
 @media (max-width: 768px) {
     .gallery .item {
         width: 45%;
