@@ -96,7 +96,7 @@
 
         .cover-photo .post-container {
             width: 90%;
-            max-width: 800px;
+            max-width: 400px;
         }
 
         /* Responsive */
