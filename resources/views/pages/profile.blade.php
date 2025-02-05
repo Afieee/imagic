@@ -175,6 +175,7 @@
                             <div class="post-user-profile">
                                 <a href="{{ route('profile', $item->user->id) }}" class="user-name"
                                     style="text-decoration: none;">{{ $item->user->name }}</a>
+
                             </div>
 
                             <div class="post-image">
