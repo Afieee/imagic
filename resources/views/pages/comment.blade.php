@@ -19,6 +19,24 @@
 
         <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet" />
     </head>
+    <style>
+        textarea {
+            width: 100%;
+            min-height: 20px;
+            max-height: 80px;
+            resize: none;
+            overflow-y: auto;
+            border: 1px solid white;
+            padding: 3px;
+            font-size: 14px;
+            border-radius: 5px;
+            outline: none;
+        }
+
+        textarea:focus {
+            border-color: black;
+        }
+    </style>
 
     <body>
         @if (session('success'))
@@ -106,7 +124,7 @@
             <form action="/commented" method="POST">
                 @csrf
                 <div class="add-comment">
-                    <input placeholder="Add a comment..." type="text" name="comment">
+                    <textarea placeholder="Add a comment..." name="comment" oninput="autoResize(this)"></textarea>
                     <input type="text" name="id_post" value="{{ $post->id_post }}" hidden>
                     <input type="text" name="id_user" value="{{ $user->id }}" hidden>
                     <button type="submit" style="color:rgb(204,0,31);">
@@ -120,5 +138,10 @@
     <script src="{{ asset('js/home.js') }}"></script>
 
     </html>
-
+    <script>
+        function autoResize(element) {
+            element.style.height = "40px";
+            element.style.height = element.scrollHeight + "px";
+        }
+    </script>
 </x-home-page-layout>
