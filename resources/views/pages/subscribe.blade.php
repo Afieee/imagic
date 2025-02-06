@@ -1,147 +1,119 @@
 <x-home-page-layout :user="$user">
 
-    {{-- {{ $user->name }}
-    {{ $post->id_post }}
-    {{ $post->post_caption }}
-
-    <h1>test</h1> --}}
-
     <head>
-        <link rel="stylesheet" href="{{ asset('css/comment.css') }}">
-        <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-        <title>
-            Imagic | Comment
-        </title>
+        <title>Imagic | Subscribe</title>
+        <link rel="stylesheet" href="{{ asset('css/subscribe.css') }}">
         <link rel="icon" href="{{ asset('storage/images/imagic_logo.png') }}" type="image/png">
-        <link
-            href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500&family=Nunito:wght@300;400;600&family=Raleway:wght@300;400;600&family=Josefin+Sans:wght@300;400;600&display=swap"
-            rel="stylesheet">
 
-        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet" />
+        {{-- <script src="https://app.sandbox.midtrans.com/snap/snap.js" data-client-key="YOUR_CLIENT_KEY"></script> --}}
+        <script src="https://app.midtrans.com/snap/snap.js" data-client-key="YOUR_CLIENT_KEY"></script>
     </head>
-    <style>
-        textarea {
-            width: 100%;
-            min-height: 20px;
-            max-height: 80px;
-            resize: none;
-            overflow-y: auto;
-            border: 1px solid white;
-            padding: 5px;
-            font-size: 14px;
-            border-radius: 5px;
-            outline: none;
-        }
 
-        textarea:focus {
-            border-color: black;
-        }
-    </style>
+    <div class="subscribe-container">
+        <form id="subscribe-form" method="POST">
+            @csrf
+            <input type="hidden" id="id_user" value="{{ $user->id }}">
+            <input type="hidden" id="email" value="{{ $user->email }}">
+            <input type="hidden" id="amount" value="1000">
 
-    <body>
-        @if (session('success'))
-            <div class="toast-success">
-                <span class="toast-icon">&#10004;</span>
-                <span class="toast-message">{{ session('success') }}</span>
-                <span class="toast-close" onclick="closeToast()">&#10005;</span>
-            </div>
-        @endif
-
-        <div class="container">
-
-            <div class="header">
-
-                <div class="username">
-                    <a href="{{ route('profile', $post->user->id) }}" class="user-name"
-                        style="text-decoration: none;">{{ $post->user->name }}</a>
-                </div>
-                <div class="options">
-                    <span class="like-count">Posted {{ $post->created_at->diffForHumans() }}</span>
-
-                </div>
-            </div>
-            @if ($post->post_image)
-                <img src="{{ asset($post->post_image) }}" alt="Uploaded Image" class="image">
-            @endif
-            <div class="content">
-                @php
-                    $isLiked = $post->post_likes->contains('id_users', auth()->user()->id);
-                @endphp
-                <form action="{{ route('toggle-like') }}" method="POST" id="like-form-{{ $post->id_post }}"
-                    style="margin-bottom: 20px">
-                    @csrf
-                    <input type="hidden" name="id_post" value="{{ $post->id_post }}">
-                    <form action="{{ route('toggle-like') }}" method="POST" id="like-form-{{ $post->id_post }}">
-                        @csrf
-                        <input type="hidden" name="id_post" value="{{ $post->id_post }}">
-                        <button type="button" class="action-btn like-btn {{ $isLiked ? 'active liked' : '' }}"
-                            onclick="document.getElementById('like-form-{{ $post->id_post }}').submit();">
-                            <i class="fas fa-thumbs-up"></i>
-                        </button>
-
-                    </form>
-
-                </form>
-
-                <div class="likes">
-                    <p class="like-count">
-                        Liked by <strong
-                            style="font-weight: 900; font-size: 1.0em; color: #555;">{{ $post->post_likes->count() }}</strong>
-                        Other </p>
-                </div>
-                <p>
-
-                    <strong>
-                        {{ $post->user->name }} :
-                    </strong>
-
-                    {!! nl2br(e($post->post_caption)) !!}
-            </div>
-            <div class="comments-container">
-                <div class="comments">
-                    @foreach ($comments as $comment)
-                        <div class="comment">
-                            <div class="text">
-                                <span class="username">
-                                    {{ $comment->user->name }} -
-                                    <span class="created-at">{{ $comment->created_at->diffForHumans() }}</span>
-                                </span>
-                                {!! nl2br(e($comment->comment)) !!}
-                            </div>
-                        </div>
-                        @if (!$loop->last)
-                            <!-- Tampilkan <hr> kecuali untuk komentar terakhir -->
-                            <hr>
-                        @endif
-                    @endforeach
-                </div>
-            </div>
-            {{-- <div class="likes">
-                <p class="like-count">
-                    {{ $post->post_likes->count() }} Liked
-                </p>
-            </div> --}}
-            <form action="/commented" method="POST">
-                @csrf
-                <div class="add-comment">
-                    <textarea placeholder="Add a comment..." name="comment" oninput="autoResize(this)"></textarea>
-                    <input type="text" name="id_post" value="{{ $post->id_post }}" hidden>
-                    <input type="text" name="id_user" value="{{ $user->id }}" hidden>
-                    <button type="submit" style="color:rgb(204,0,31);">
-                        Post
+            <div>
+                @if (session('user_premium') == 'Premium' || $user->premium == 'Premium')
+                    <p class="subscribe-text"> Thanks For Your Subscription, Enjoy Your Premium Feature
+                    </p>
+                    <p class="subscribe-description">
+                        Your Post Will Be Highlighted & Prioritized For Everyone, You Have Your ⭐ Badge!
+                    </p>
+                    <button type="button" class="subscribe-btn" disabled style="background-color: gray">
+                        You Are Already Premium User
                     </button>
-                </div>
-            </form>
+                @else
+                    <p class="subscribe-text">Subscribe Now to Get Prioritize Post!</p>
+                    <p class="subscribe-description">
+                        Join our community and enjoy premium features for just Rp 1.000. Get your Art to be
+                        prioritized on the home page + get your ⭐ badge for premium user.
+                    </p>
+                    <button type="button" id="subscribe-btn" class="subscribe-btn">
+                        <span class="subscribe-price">Rp 1.000</span> - Subscribe Now
+                    </button>
+                @endif
+            </div>
+        </form>
+    </div>
 
-        </div>
-    </body>
-    <script src="{{ asset('js/home.js') }}"></script>
-
-    </html>
     <script>
-        function autoResize(element) {
-            element.style.height = "40px";
-            element.style.height = element.scrollHeight + "px";
+        const subscribeButton = document.getElementById('subscribe-btn');
+
+        if (subscribeButton) {
+            subscribeButton.addEventListener('click', function() {
+                fetch('/generate-snap-token', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'X-CSRF-TOKEN': '{{ csrf_token() }}'
+                        },
+                        body: JSON.stringify({
+                            id_user: document.getElementById('id_user').value,
+                            email: document.getElementById('email').value,
+                            amount: document.getElementById('amount').value
+                        })
+                    })
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.snapToken) {
+                            window.snap.pay(data.snapToken, {
+                                onSuccess: function(result) {
+                                    alert('Pembayaran berhasil! Terima kasih telah berlangganan.');
+
+                                    // Panggil endpoint untuk menyimpan data setelah pembayaran berhasil
+                                    fetch('/post-payment-success', {
+                                            method: 'POST',
+                                            headers: {
+                                                'Content-Type': 'application/json',
+                                                'X-CSRF-TOKEN': '{{ csrf_token() }}'
+                                            },
+                                            body: JSON.stringify({
+                                                id_user: document.getElementById(
+                                                    'id_user').value,
+                                                email: document.getElementById('email')
+                                                    .value,
+                                                amount: document.getElementById(
+                                                    'amount').value
+                                            })
+                                        })
+                                        .then(response => response.json())
+                                        .then(data => {
+                                            if (data.success) {
+                                                window.location.href = '/subscribe';
+                                            } else {
+                                                alert('Error: ' + data.error);
+                                            }
+                                        })
+                                        .catch(error => {
+                                            console.error('Error:', error);
+                                            alert('Terjadi kesalahan, coba lagi nanti.');
+                                        });
+                                },
+                                onPending: function(result) {
+                                    alert('Pembayaran Anda sedang diproses.');
+                                    console.log(result);
+                                },
+                                onError: function(result) {
+                                    alert('Terjadi kesalahan saat memproses pembayaran.');
+                                    console.error(result);
+                                }
+                            });
+                        } else {
+                            alert('Error: ' + (data.error || 'Gagal memproses pembayaran.'));
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Error:', error);
+                        alert('Terjadi kesalahan, coba lagi nanti.');
+                    });
+            });
         }
     </script>
+
+    <script src="{{ asset('js/home-drop-down.js') }}"></script>
+
 </x-home-page-layout>
