@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Post;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ImageController;
@@ -10,6 +11,7 @@ use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PostLikeController;
 use App\Http\Controllers\SubscribeController;
+use App\Http\Controllers\PostEndPointController;
 
 Route::get('/', [UsersController::class, 'halamanIndex']);
 Route::get('/login', function () {
@@ -42,4 +44,9 @@ Route::middleware('auth')->group(function () {
     Route::post('/post-payment-success', [SubscribeController::class, 'postPaymentSuccess'])->name('post.payment.success');
 
     Route::post('/logout', [UsersController::class, 'logout']);
+});
+
+
+Route::get('/postingan-imagic', function () {
+    return response()->json(Post::limit(100)->get());
 });
