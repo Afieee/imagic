@@ -46,7 +46,7 @@ Route::middleware('auth')->group(function () {
     Route::post('/logout', [UsersController::class, 'logout']);
 });
 
-
+// endpoint untuk akses orang lain
 Route::get('/postingan-imagic', function () {
     return response()->json(Post::limit(100)->get());
 });
