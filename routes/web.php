@@ -47,6 +47,6 @@ Route::middleware('auth')->group(function () {
 });
 
 // endpoint untuk akses orang lain
-Route::get('/postingan-imagic', function () {
-    return response()->json(Post::limit(100)->get());
-});
+// Route::get('/postingan-imagic', function () {
+//     return response()->json(Post::limit(100)->get());
+// });

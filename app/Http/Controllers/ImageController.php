@@ -34,18 +34,13 @@ class ImageController extends Controller
             'rights' => 'nullable|string',
         ]);
 
-        $postingan = Post::with('user')->get();
-
         $imagePath = $request->file('image')->path();
         $watermarkPath = $request->file('watermark') ? $request->file('watermark')->path() : null;
 
         $originalImageName = pathinfo($request->file('image')->getClientOriginalName(), PATHINFO_FILENAME);
         $imageExtension = $request->file('image')->getClientOriginalExtension();
-
         $watermarkedImageName = $originalImageName . 'watermarked' . uniqid() . '.' . $imageExtension;
-
         $watermarkedImagePath = storage_path('app/public/' . $watermarkedImageName);
-        $user = Auth::user();
 
         try {
             $watermarkedImage = $watermarkPath
@@ -53,17 +48,29 @@ class ImageController extends Controller
                 : file_get_contents($imagePath);
             file_put_contents($watermarkedImagePath, $watermarkedImage);
 
-            $metadata = $this->imageService->getMetadata($watermarkedImagePath);
-            $hashtags = $this->imageService->generateHashtags($imagePath);
-            $userId = Auth::user()->id;
+            // Coba dapatkan metadata, jika gagal set null
+            try {
+                $metadata = $this->imageService->getMetadata($watermarkedImagePath);
+            } catch (\Exception $e) {
+                $metadata = null;
+            }
+
+            // Coba dapatkan hashtags, jika gagal set null
+            try {
+                $hashtags = $this->imageService->generateHashtags($imagePath);
+            } catch (\Exception $e) {
+                $hashtags = null;
+            }
+
+            $userId = Auth::id();
             $postData = [
                 'post_image' => 'storage/' . $watermarkedImageName,
-                'post_image_file_size' => $metadata['data']['FileSize'],
-                'post_image_extension' => $metadata['data']['FileTypeExtension'],
-                'post_image_size' => $metadata['data']['ImageSize'],
+                'post_image_file_size' => $metadata['data']['FileSize'] ?? null,
+                'post_image_extension' => $metadata['data']['FileTypeExtension'] ?? null,
+                'post_image_size' => $metadata['data']['ImageSize'] ?? null,
                 'post_caption' => $request->input('caption', ''),
                 'post_status' => 'Published',
-                'post_hashtags' => implode(' ', $hashtags['tags'] ?? []),
+                'post_hashtags' => isset($hashtags['tags']) ? implode(' ', $hashtags['tags']) : null,
                 'user_id' => $userId,
             ];
 
@@ -80,6 +87,42 @@ class ImageController extends Controller
             return redirect()->route('halaman-home')->withErrors(['error' => $e->getMessage()]);
         }
     }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
